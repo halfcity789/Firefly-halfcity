@@ -1,29 +1,144 @@
 # 关于我 / About Me
 
-你好！我是 **夏叶** ，一个在数字世界中默默无闻的一片叶子。
+你好，我是 **半城**。
 
-## 🛠️ 关于本站
+一个热爱计算机、喜欢探索网安世界的人。
 
-这个网站使用 **Astro** 框架构建，采用了 [Firefly](https://github.com/CuteLeaf/Firefly) 模板，Firefly 是基于 [Fuwari](https://github.com/saicaca/fuwari) 的二次开发。
+相比于得到答案，我更享受寻找答案的过程。从第一次接触 Kali，搞简单的爬虫，到走进逆向、Windows 内核、Active Directory、虚拟化和系统开发，这条路已经走了三四年。
 
-**Firefly** 是一款基于 Astro 框架和 Fuwari 模板开发的清新美观且现代化个人博客主题模板，专为技术爱好者和内容创作者设计。该主题融合了现代 Web 技术栈，提供了丰富的功能模块和高度可定制的界面，让您能够轻松打造出专业且美观的个人博客网站。
+现在回忆一下，高中的生活虽然没有初中想象中那么累，但也说不上说轻松。网安的学习可以说是很好的调味剂，让我能够不困于枯燥的学习。虽然有时网安上的问题反而比学习上的问题还棘手，但我倒不会对这段路感到遗憾。
 
-
-**🖥️在线预览： [Firefly - Demo site](https://firefly.cuteleaf.cn/)**
-
-**🏠我的博客： [https://blog.cuteleaf.cn](https://blog.cuteleaf.cn/)**
-
-**📝Firefly使用文档： [https://docs-firefly.cuteleaf.cn](https://docs-firefly.cuteleaf.cn/)**
-
-**⭐Firefly开源地址：[https://github.com/CuteLeaf/Firefly](https://github.com/CuteLeaf/Firefly)** 
-
-**⭐Fuwari开源地址：[https://github.com/saicaca/fuwari](https://github.com/saicaca/fuwari)**
-
-::github{repo="CuteLeaf/Firefly"}
-
-::github{repo="saicaca/fuwari"}
+如果要形容一下自己，我可以说是话多也话少的人。
 
 ---
 
-*感谢你的来访！希望在这里能找到对你有用的内容！*
+## 📖 为什么写博客
 
+过去很长一段时间，我其实没有写博客的习惯。
+
+更多的时候，是把知识留在脑子里，或者散落在各种笔记、代码和实验环境中。
+
+后来逐渐意识到：
+
+> **真正理解一件事情，往往发生在把它写出来的时候。**
+
+因此，我决定开始认真记录自己的学习过程(并没有Haha)。
+
+我自己参考B站的教程搭建了一个烂大街的前后端分离的个人博客系统，结果写了几篇就懒得写了，毕竟部署困难，学业压力也不小。
+
+现在我又回想起了写博客的事，我希望能够在大学有所改变，决定从现在开始记录一些什么。
+
+希望未来某一天，当我再次回到这里时，仍然能够清楚地知道当初为什么会这样思考，又是如何一步一步走到今天。
+
+如果这些内容能够帮助到别人，那便是这个博客最大的价值。
+
+---
+
+## 🌱 关于我
+
+我的兴趣几乎都围绕着计算机系统本身。
+
+这些年陆续学习和实践过：
+
+- Windows 逆向
+- Android 逆向
+- Active Directory 与红队技术
+- Rust / Go 开发
+- Windows Driver（WDM）
+- Hypervisor 与 VT-x
+- Rootkit / Bootkit
+- 二进制安全
+- 操作系统
+- CPU 与计算机体系结构
+- IoT 与嵌入式
+
+说实话我不太认可报菜名式的列举，但是大概是因为没有什么引导，时间也很细碎，个人的心态也会被学习或者娱乐需求影响，我的学习方向很杂乱。我不知道我学的路径对不对，但至少没有白学(也许?)
+
+我一直相信，理解计算机最好的方式，就是不断向下探索。
+
+从应用程序，到操作系统，再到 CPU、内存管理、虚拟化以及硬件本身，每深入一层，都会发现一个更加广阔的世界。
+
+## 🧰 技术栈速览
+
+**语言**：Rust · C/C++ · Python · Go · Java
+
+**安全工具**：IDA Pro · x64dbg · WinDbg · Wireshark · Impacket · BloodHound · Frida · unidbg
+
+**开发框架**： Tauri 2 · SpringBoot · gRPC · WDM
+
+## 🚀 目前正在研究
+
+目前主要专注于以下几个方向：
+
+- **Daylight**: 基于 Rust/GO 的 C2 基础设施 (Implent/Cli/Server)
+- **Sparkle**: 基于Vt 实现 EPT Hook、Minifilter、驱动读写的WDM驱动，提供底层访问能力
+- **Aurora**： Sparkle的用户态FPS外部内存绘制框架实现
+- HTB 依旧打靶机
+
+学习仍在继续，项目也还远远没有完成。
+
+不过正因为如此，它们才值得期待。
+
+## ⚔️ 关于实战
+
+### 渗透
+
+- 在 **HackTheBox** 完成 **80+** 靶机，难度覆盖 Easy → Insane，域渗透为主要研究方向
+- 在 **VulnHub** 完成 **40+** 靶机
+- Daylight也算还行
+
+### 逆向
+
+- 完成包括 **csgo** 在内的几款款内部内存waigua工具的制作，涵盖从 Source 到 Unity 引擎等。
+
+### 开发
+
+- 旧个人博客 Vue3 + SpringBoot + MybatisPlus + Redis + MySQL( 虽然烂大街但我还是要说(*/ω＼*) )
+
+---
+
+## 💻 关于这个博客
+
+建立这个博客，并不是为了记录每天发生了什么。
+
+更准确地说，它是我的学习笔记、研究记录以及思考过程(希望是吧)。
+
+这里主要会分享：
+
+- Windows Kernel Abuse
+- Reverse Engineering (exe/apk)
+- Hypervisor & Virtualization
+- Normal Development (Rust / Go ....)
+- Malware Analysis
+- Offensive Security
+- Pentest (Web/Endpoint/AD)
+- Game Security / FPS External Cheats (Memory / AI)
+- Crawler
+- 一些开发或者渗透过程中踩过的坑
+- 偶尔记录一些自己的思考
+- ...
+
+我希望这些内容不仅能帮助未来的自己，也能够帮助偶然来到这里的人。
+
+---
+
+## 🛠️ 关于本站
+
+本站基于 **Astro** 构建，使用 **Firefly** 主题，并根据自己的需求进行了部分修改与定制。
+
+我希望它能够保持简单、快速且长期稳定。
+
+这里没有刻意追求更新频率也不会发太多的琐事。
+
+更多的时候，它只是一个记录成长、沉淀知识和分享思考的地方。
+
+---
+
+## 🌿 最后
+
+感谢你的来访。
+
+希望这里能够记录我的成长，也能够陪伴我的探索，并帮助需要的人。
+
+**写于: 2026.6.28**
+**修改: 暂无**

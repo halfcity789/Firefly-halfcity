@@ -10,6 +10,10 @@ import SidebarTOC from "@/components/widget/SidebarTOC.astro";
 import SiteInfo from "@/components/widget/SiteInfo.astro";
 import SiteStats from "@/components/widget/SiteStats.astro";
 import Tags from "@/components/widget/Tags.astro";
+
+import UmamiStats from "@/components/widget/UmamiStats.astro";
+import QuoteOfTheDay from "@/components/widget/QuoteOfTheDay.astro";
+
 import { sidebarLayoutConfig } from "@/config";
 import type {
 	MobileBottomComponentConfig,
@@ -50,6 +54,9 @@ const componentMap = {
 	calendar: Calendar,
 	music: Music,
 	siteInfo: SiteInfo,
+
+	umamiStats: UmamiStats,
+	quoteOfTheDay: QuoteOfTheDay,
 };
 
 // 获取侧边栏位置
@@ -173,8 +180,13 @@ const hasInitiallyVisibleTopComponents = topComponents.some(
 ---
 
 {
-	(topComponents.length > 0 || stickyComponents.length > 0 || bottomComponents.length > 0) && (
-		<div id={`${side}-sidebar`} class:list={[className, "flex flex-col w-full pt-0"]}>
+	(topComponents.length > 0 ||
+		stickyComponents.length > 0 ||
+		bottomComponents.length > 0) && (
+		<div
+			id={`${side}-sidebar`}
+			class:list={[className, "flex flex-col w-full pt-0"]}
+		>
 			{/* Mobile bottom components - 直接渲染所有组件，不分组 */}
 			{isMobileBottom ? (
 				<div class="flex flex-col w-full gap-4">
@@ -198,7 +210,10 @@ const hasInitiallyVisibleTopComponents = topComponents.some(
 							{topComponents.map((comp, index) => {
 								const Component = componentMap[comp.type];
 								if (!Component) return null;
-								const props = getComponentProps(comp, index) as any;
+								const props = getComponentProps(
+									comp,
+									index,
+								) as any;
 								return <Component {...props} />;
 							})}
 						</div>
@@ -211,7 +226,9 @@ const hasInitiallyVisibleTopComponents = topComponents.some(
 							class:list={[
 								"flex flex-col w-full mt-0 gap-4",
 								"sticky",
-								hasInitiallyVisibleTopComponents ? "top-4" : "top-0",
+								hasInitiallyVisibleTopComponents
+									? "top-4"
+									: "top-0",
 							]}
 						>
 							{stickyComponents.map((comp, index) => {
@@ -219,7 +236,7 @@ const hasInitiallyVisibleTopComponents = topComponents.some(
 								if (!Component) return null;
 								const props = getComponentProps(
 									comp,
-									topComponents.length + index
+									topComponents.length + index,
 								) as any;
 								return <Component {...props} />;
 							})}
