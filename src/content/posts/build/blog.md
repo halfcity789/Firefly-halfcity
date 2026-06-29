@@ -13,7 +13,7 @@ draft: false
 
 这里直接我也来基于Firefly和CloudFare来搭建一个美观的博客页面
 
-# Fork库Firefly并构建
+## Fork库Firefly并构建
 
 ![Project](/assets/images/blog/build/blog/image-1.png)
 
@@ -60,7 +60,7 @@ pnpm dev
 
 一些杂项的配置都可以一个个看一下改一下
 
-# 通过Cloudflare Pages部署博客
+## 通过Cloudflare Pages部署博客
 
 > 忘记截图了o(╥﹏╥)o
 
@@ -70,13 +70,13 @@ pnpm dev
 
 3.构建完成后，在上面的域选项中就可以看到Worker的URL
 
-# 配置域名
+## 配置域名
 
 在Cloudflare的域选项中点击连接域，连接到自己的域名
 
 然后替换一下名称服务器，按照提示操作后稍作等待即可
 
-# 配置SSL
+## 配置SSL
 
 在安全选项中选择SSL，概览中选中强制使用HTTPS，然后将访问策略设置成Full(strict)
 

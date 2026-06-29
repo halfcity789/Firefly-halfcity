@@ -32,12 +32,14 @@ const quote = quotes[randomIndex] || { text: "暂无名言", author: "" };
     style={style}
 >
     <div class="quote-content">
-        <blockquote class="quote-text">
+        <blockquote class="quote-text text-neutral-700 dark:text-neutral-300">
             <span class="quote-mark">"</span>
             {quote.text}
             <span class="quote-mark">"</span>
         </blockquote>
-        <cite class="quote-author">—— {quote.author}</cite>
+        <cite class="quote-author text-neutral-500 dark:text-neutral-400">
+            —— {quote.author}
+        </cite>
     </div>
 </WidgetLayout>
 
@@ -54,7 +56,6 @@ const quote = quotes[randomIndex] || { text: "暂无名言", author: "" };
         font-style: italic;
         font-size: 0.9rem;
         line-height: 1.6;
-        color: var(--text-color);
         padding: 0 0.5rem;
         margin: 0;
     }
@@ -72,17 +73,10 @@ const quote = quotes[randomIndex] || { text: "暂无名言", author: "" };
         display: block;
         text-align: right;
         font-size: 0.75rem;
-        color: var(--content-meta);
         font-style: normal;
         margin-top: 0.25rem;
     }
 
-    /* 深色模式优化 */
-    :global(html.dark) .quote-text {
-        color: var(--text-color);
-    }
-
-    /* 悬停效果 */
     :global(.quote-content:hover .quote-text) {
         color: var(--primary);
         transition: color 0.2s ease;
