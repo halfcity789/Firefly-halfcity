@@ -15,7 +15,7 @@ draft: false
 
 ## Fork库Firefly并构建
 
-![Project](/assets/images/blog/build/blog/image-1.png)
+![](https://img.halfcity.qzz.io/2026/06/e325d3efc6b290eb736712d871265458.avif)
 
 ```bash
 pnpm install
@@ -24,7 +24,7 @@ pnpm dev
 
 在 **http://localhost:4321/** 就可以看到网站的效果
 
-![Home](/assets/images/blog/build/blog/image-2.png)
+![](https://img.halfcity.qzz.io/2026/06/3b3d225e40969b1de12e781081f5700f.avif)
 
 可以看到，这个效果还是非常不错的。
 

@@ -30,4 +30,5 @@ draft: false
 这里其实答复挺快的，我在下午发的请求差不多晚上就收到了邮件，就像这样
 
 > Vercel Registration Approved
+
 > Thank you for contacting our team for help with your Vercel registration. We appreciate your patience as our team ran checks that help ensure new users are not abusive or bots.

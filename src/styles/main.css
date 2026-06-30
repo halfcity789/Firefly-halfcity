@@ -51,6 +51,48 @@ html {
     scroll-behavior: smooth;
 }
 
+/* 滚动条 */
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+::-webkit-scrollbar-button:start:decrement,
+::-webkit-scrollbar-button:end:increment {
+    display: none;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: hsl(220, 55%, 62%);
+    border-radius: 999px;
+    box-shadow:
+        0 0 4px hsl(220, 75%, 68%),
+        0 0 10px hsl(220, 65%, 55%);
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: hsl(220, 70%, 72%);
+    box-shadow:
+        0 0 6px hsl(220, 88%, 78%),
+        0 0 16px hsl(220, 78%, 63%),
+        0 0 28px hsl(220, 68%, 52%);
+}
+
+::-webkit-scrollbar-corner {
+    background: transparent;
+}
+
 /* 页面顶部渐变高光效果 */
 .top-gradient-highlight {
     position: fixed;
