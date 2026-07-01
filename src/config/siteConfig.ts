@@ -12,7 +12,7 @@ export const siteConfig: SiteConfig = {
 	subtitle: "Reverse · Kernel · Offensive Security",
 
 	// 站点 URL
-	site_url: "https://blog.halfcity.qzz.io",
+	site_url: "https://blog.halfcity.top",
 
 	// 站点描述
 	description:
@@ -21,7 +21,7 @@ export const siteConfig: SiteConfig = {
 	// 站点关键词
 	keywords: [
 		"逆向",
-		"AD域渗透",
+		"渗透",
 		"Hypervisor",
 		"游戏安全",
 		"开发",
@@ -36,7 +36,7 @@ export const siteConfig: SiteConfig = {
 		// 是否对访问者隐藏主题色选择器
 		fixed: true,
 		// 默认模式："light" 亮色，"dark" 暗色，"system" 跟随系统
-		defaultMode: "system",
+		defaultMode: "dark",
 	},
 
 	// 页面整体宽度（单位：rem）
