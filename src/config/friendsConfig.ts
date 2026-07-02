@@ -53,11 +53,31 @@ export const friendsConfig: FriendLink[] = [
 		enabled: true, // 是否启用
 	},
 	{
-		title: "米白 の 宝藏之地",
+		title: "流欺の博客",
 		imgurl:
-			"https://bu.dusays.com/2026/05/10/69fff19d7b60d.jpg",
-		desc: "在代码、二次元与摄影间穿梭的普通人。近期正埋头于 修图与全栈开发。",
-		siteurl: "https://www.mibai.xyz/",
+			"https://tc.lqay.cn/LightPicture/2026/03/5f64e0f0f361e19c.png",
+		desc: "嗯对就是个博客",
+		siteurl: "https://blog.lqay.cn",
+		tags: ["Blog"],
+		weight: 10, // 权重，数字越大排序越靠前
+		enabled: true, // 是否启用
+	},
+	{
+		title: "wangxinyang",
+		imgurl:
+			"https://wangxinyang.top/avatar.png",
+		desc: "个人博客 / 学习交流 / 生活日常",
+		siteurl: "https://wangxinyang.top",
+		tags: ["Blog"],
+		weight: 10, // 权重，数字越大排序越靠前
+		enabled: true, // 是否启用
+	},
+	{
+		title: "bbb-lsy07",
+		imgurl:
+			"https://blog.tsoo.net/upload/lsyb.png",
+		desc: "科技激荡人文，洞见智慧本真。",
+		siteurl: "https://blog.tsoo.net",
 		tags: ["Blog"],
 		weight: 10, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
