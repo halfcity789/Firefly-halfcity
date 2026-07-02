@@ -22,16 +22,46 @@ export const friendsPageConfig: FriendsPageConfig = {
 
 // 友链配置
 export const friendsConfig: FriendLink[] = [
-	// {
-	// 	title: "夏夜流萤",
-	// 	imgurl:
-	// 		"https://weavatar.com/avatar/d252655d40d6874417a720bad0a6c5f77f8f6a1fd2f882f8f338402dc37e4190?s=640",
-	// 	desc: "飞萤之火自无梦的长夜亮起，绽放在终竟的明天。",
-	// 	siteurl: "https://blog.cuteleaf.cn",
-	// 	tags: ["Blog"],
-	// 	weight: 10, // 权重，数字越大排序越靠前
-	// 	enabled: true, // 是否启用
-	// }
+	{
+		title: "XingHuiSamaの宝藏之地",
+		imgurl:
+			"https://bu.dusays.com/2026/03/24/69c1e38ac1846.jpg",
+		desc: "今天我也要学习吗",
+		siteurl: "https://www.xinghuisama.top",
+		tags: ["Blog"],
+		weight: 10, // 权重，数字越大排序越靠前
+		enabled: true, // 是否启用
+	},
+	{
+		title: "Lingkaの宝藏之地",
+		imgurl:
+			"https://bu.dusays.com/2026/06/12/6a2c1cb4f2089.jpg",
+		desc: "一个在硬件、MCU、FPGA和ARM Linux SoC之间来回折腾的开发者，目标是让每一块板子都乖乖跑起来。",
+		siteurl: "https://www.lingkalab.top/",
+		tags: ["Blog"],
+		weight: 10, // 权重，数字越大排序越靠前
+		enabled: true, // 是否启用
+	},
+	{
+		title: "阿的宝藏之地",
+		imgurl:
+			"https://bu.dusays.com/2026/06/20/6a361fc5c68ff.jpg",
+		desc: "记录项目、数学思考与杂谈。",
+		siteurl: "https://nothing-new.icu",
+		tags: ["Blog"],
+		weight: 10, // 权重，数字越大排序越靠前
+		enabled: true, // 是否启用
+	},
+	{
+		title: "米白 の 宝藏之地",
+		imgurl:
+			"https://bu.dusays.com/2026/05/10/69fff19d7b60d.jpg",
+		desc: "在代码、二次元与摄影间穿梭的普通人。近期正埋头于 修图与全栈开发。",
+		siteurl: "https://www.mibai.xyz/",
+		tags: ["Blog"],
+		weight: 10, // 权重，数字越大排序越靠前
+		enabled: true, // 是否启用
+	}
 ];
 
 // 获取启用的友链并进行排序
