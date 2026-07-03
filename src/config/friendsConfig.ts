@@ -24,8 +24,7 @@ export const friendsPageConfig: FriendsPageConfig = {
 export const friendsConfig: FriendLink[] = [
 	{
 		title: "XingHuiSamaの宝藏之地",
-		imgurl:
-			"https://bu.dusays.com/2026/03/24/69c1e38ac1846.jpg",
+		imgurl:"https://bu.dusays.com/2026/03/24/69c1e38ac1846.jpg",
 		desc: "今天我也要学习吗",
 		siteurl: "https://www.xinghuisama.top",
 		tags: ["Blog"],
@@ -34,8 +33,7 @@ export const friendsConfig: FriendLink[] = [
 	},
 	{
 		title: "Lingkaの宝藏之地",
-		imgurl:
-			"https://bu.dusays.com/2026/06/12/6a2c1cb4f2089.jpg",
+		imgurl:"https://bu.dusays.com/2026/06/12/6a2c1cb4f2089.jpg",
 		desc: "一个在硬件、MCU、FPGA和ARM Linux SoC之间来回折腾的开发者，目标是让每一块板子都乖乖跑起来。",
 		siteurl: "https://www.lingkalab.top/",
 		tags: ["Blog"],
@@ -44,8 +42,7 @@ export const friendsConfig: FriendLink[] = [
 	},
 	{
 		title: "阿的宝藏之地",
-		imgurl:
-			"https://bu.dusays.com/2026/06/20/6a361fc5c68ff.jpg",
+		imgurl:"https://bu.dusays.com/2026/06/20/6a361fc5c68ff.jpg",
 		desc: "记录项目、数学思考与杂谈。",
 		siteurl: "https://nothing-new.icu",
 		tags: ["Blog"],
@@ -54,8 +51,7 @@ export const friendsConfig: FriendLink[] = [
 	},
 	{
 		title: "流欺の博客",
-		imgurl:
-			"https://tc.lqay.cn/LightPicture/2026/03/5f64e0f0f361e19c.png",
+		imgurl:"https://tc.lqay.cn/LightPicture/2026/03/5f64e0f0f361e19c.png",
 		desc: "嗯对就是个博客",
 		siteurl: "https://blog.lqay.cn",
 		tags: ["Blog"],
@@ -64,8 +60,7 @@ export const friendsConfig: FriendLink[] = [
 	},
 	{
 		title: "wangxinyang",
-		imgurl:
-			"https://wangxinyang.top/avatar.png",
+		imgurl:"https://wangxinyang.top/avatar.png",
 		desc: "个人博客 / 学习交流 / 生活日常",
 		siteurl: "https://wangxinyang.top",
 		tags: ["Blog"],
@@ -74,10 +69,45 @@ export const friendsConfig: FriendLink[] = [
 	},
 	{
 		title: "bbb-lsy07",
-		imgurl:
-			"https://blog.tsoo.net/upload/lsyb.png",
+		imgurl:"https://blog.tsoo.net/upload/lsyb.png",
 		desc: "科技激荡人文，洞见智慧本真。",
 		siteurl: "https://blog.tsoo.net",
+		tags: ["Blog"],
+		weight: 10, // 权重，数字越大排序越靠前
+		enabled: true, // 是否启用
+	},
+	{
+		title: "Eric - Termina的博客",
+		imgurl:"https://assets.ericterminal.com/logo-transparent.png",
+		desc: "刃は鞘に、心は花に",
+		siteurl: "https://blog.ericterminal.com",
+		tags: ["Blog"],
+		weight: 10, // 权重，数字越大排序越靠前
+		enabled: true, // 是否启用
+	},
+	{
+		title: "狐狐's Blog",
+		imgurl: "https://blog.foxnature.net/profile.png",
+		desc: "我不是狐，却借狐名；你若唤我狐狐，我便答应",
+		siteurl: "https://blog.foxnature.net/",
+		tags: ["Blog"],
+		weight: 10, // 权重，数字越大排序越靠前
+		enabled: true, // 是否启用
+	},
+	{
+		title: "Hello I'm 0o酱",
+		imgurl: "https://image.im0o.top/files/202112021204213.jpg",
+		desc: "光阴如梦，昨日随风",
+		siteurl: "https://blog.im0o.top/",
+		tags: ["Blog"],
+		weight: 10, // 权重，数字越大排序越靠前
+		enabled: true, // 是否启用
+	},
+	{
+		title: "Eliauk's Blog",
+		imgurl: "https://img.eliauk312.top/avatar/default-avatar.jpg",
+		desc: "一方天地，记录代码、生活和偶尔的奇思妙想。",
+		siteurl: "https://eliauk312.top/",
 		tags: ["Blog"],
 		weight: 10, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用

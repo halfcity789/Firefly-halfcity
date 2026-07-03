@@ -9,6 +9,8 @@ import MusicManager from "@components/features/MusicManager.astro";
 import SakuraEffect from "@components/features/SakuraEffect.astro";
 import ConfigCarrier from "@components/layout/ConfigCarrier.astro";
 
+import ExternalLinkWarning from "@components/widget/ExternalLinkWarning.astro";
+
 import {
 	analyticsConfig,
 	backgroundWallpaper,
@@ -581,6 +583,9 @@ const siteLang = lang.replace("_", "-");
 
     <!-- Fancybox Manager -->
     <FancyboxManager />
+
+    <!-- External Link Warning Card -->
+    <ExternalLinkWarning />
   </body>
 </html>
 

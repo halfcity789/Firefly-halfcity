@@ -1,0 +1,247 @@
+---
+const trustedDomains: string[] = [
+    "github.com/halfcity789",
+    "app.hackthebox.com/users/1560925",
+];
+---
+
+<div id="ext-link-modal" class="ext-modal" aria-hidden="true">
+    <div class="ext-modal__backdrop" data-close></div>
+    <div
+        class="ext-modal__card"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="ext-modal-title"
+    >
+        <h2 id="ext-modal-title">即将离开本站</h2>
+        <p class="ext-modal__desc">你正在访问一个外部链接：</p>
+        <p class="ext-modal__url" id="ext-modal-url"></p>
+        <label class="ext-modal__remember">
+            <input type="checkbox" id="ext-modal-remember" />
+            不再提醒该域名
+        </label>
+        <div class="ext-modal__actions">
+            <button class="ext-modal__btn ext-modal__btn--ghost" data-close
+                >取消</button
+            >
+            <a
+                class="ext-modal__btn ext-modal__btn--primary"
+                id="ext-modal-confirm"
+                data-no-warn
+                target="_blank"
+                rel="noopener noreferrer">继续访问</a
+            >
+        </div>
+    </div>
+</div>
+
+<style>
+    .ext-modal {
+        position: fixed;
+        inset: 0;
+        z-index: 999;
+        display: none;
+        align-items: center;
+        justify-content: center;
+    }
+    .ext-modal[data-open="true"] {
+        display: flex;
+    }
+    .ext-modal__backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(17, 17, 27, 0.65); /* ctp mocha crust w/ opacity */
+        backdrop-filter: blur(2px);
+    }
+    .ext-modal__card {
+        position: relative;
+        width: min(420px, 90vw);
+        background: #1e1e2e; /* ctp base */
+        border: 1px solid #313244; /* ctp surface0 */
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        animation: ext-pop 0.15s ease-out;
+    }
+    @keyframes ext-pop {
+        from {
+            opacity: 0;
+            transform: translateY(6px) scale(0.98);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+    .ext-modal__card h2 {
+        margin: 0 0 0.5rem;
+        font-size: 1.1rem;
+        color: #cdd6f4; /* ctp text */
+    }
+    .ext-modal__desc {
+        margin: 0 0 0.25rem;
+        font-size: 0.9rem;
+        color: #a6adc8; /* ctp subtext0 */
+    }
+    .ext-modal__url {
+        margin: 0 0 1rem;
+        padding: 0.5rem 0.75rem;
+        background: #313244;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        color: #cba6f7; /* ctp mauve */
+        word-break: break-all;
+    }
+    .ext-modal__remember {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.85rem;
+        color: #a6adc8;
+        margin-bottom: 1.25rem;
+        cursor: pointer;
+    }
+    .ext-modal__actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.6rem;
+    }
+    .ext-modal__btn {
+        padding: 0.45rem 1rem;
+        border-radius: 8px;
+        font-size: 0.85rem;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    .ext-modal__btn--ghost {
+        background: transparent;
+        color: #a6adc8;
+        border: 1px solid #45475a;
+    }
+    .ext-modal__btn--ghost:hover {
+        background: #313244;
+    }
+    .ext-modal__btn--primary {
+        background: #cba6f7;
+        color: #1e1e2e;
+        font-weight: 600;
+    }
+    .ext-modal__btn--primary:hover {
+        background: #b4a1e8;
+    }
+</style>
+
+<script define:vars={{ trustedDomains }}>
+    // 避免 Astro View Transitions 下重复绑定
+    if (!window.__extLinkWarnInit) {
+        window.__extLinkWarnInit = true;
+
+        const STORAGE_KEY = "ext-link-trusted-domains";
+
+        function getStoredTrusted() {
+            try {
+                return new Set(
+                    JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"),
+                );
+            } catch {
+                return new Set();
+            }
+        }
+
+        function addStoredTrusted(domain) {
+            const set = getStoredTrusted();
+            set.add(domain);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify([...set]));
+        }
+
+        function normalizeEntry(entry) {
+            return entry.replace(/^https?:\/\//, "").replace(/\/$/, "");
+        }
+
+        function isTrustedUrl(href, staticList, storedList) {
+            const target = new URL(href, window.location.href);
+            const fullPath = (target.hostname + target.pathname).replace(
+                /\/$/,
+                "",
+            );
+            const entries = [...staticList, ...storedList].map(normalizeEntry);
+
+            return entries.some((entry) => {
+                if (entry.includes("/")) {
+                    // 路径前缀匹配
+                    return (
+                        fullPath === entry || fullPath.startsWith(entry + "/")
+                    );
+                }
+                // 纯域名匹配
+                return target.hostname === entry;
+            });
+        }
+
+        function isExternal(url) {
+            try {
+                const target = new URL(url, window.location.href);
+                if (target.protocol !== "http:" && target.protocol !== "https:")
+                    return false;
+                return target.hostname !== window.location.hostname;
+            } catch {
+                return false;
+            }
+        }
+
+        function openModal(url) {
+            const modal = document.getElementById("ext-link-modal");
+            const urlEl = document.getElementById("ext-modal-url");
+            const confirmBtn = document.getElementById("ext-modal-confirm");
+            const rememberBox = document.getElementById("ext-modal-remember");
+
+            urlEl.textContent = url;
+            confirmBtn.href = url;
+            rememberBox.checked = false;
+            modal.dataset.open = "true";
+
+            confirmBtn.onclick = () => {
+                if (rememberBox.checked) {
+                    addStoredTrusted(new URL(url).hostname);
+                }
+                closeModal();
+            };
+        }
+
+        function closeModal() {
+            document.getElementById("ext-link-modal").dataset.open = "false";
+        }
+
+        document.addEventListener("click", (e) => {
+            const anchor = e.target.closest("a[href]");
+            if (!anchor) return;
+
+            const href = anchor.getAttribute("href");
+            if (!href || href.startsWith("#")) return;
+            if (anchor.hasAttribute("data-no-warn")) return;
+            if (!isExternal(href)) return;
+
+            if (isTrustedUrl(href, trustedDomains, [...getStoredTrusted()]))
+                return;
+
+            e.preventDefault();
+            openModal(href);
+        });
+
+        document
+            .getElementById("ext-link-modal")
+            ?.addEventListener("click", (e) => {
+                if (
+                    e.target.dataset.close !== undefined ||
+                    e.target.hasAttribute("data-close")
+                ) {
+                    closeModal();
+                }
+            });
+
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape") closeModal();
+        });
+    }
+</script>

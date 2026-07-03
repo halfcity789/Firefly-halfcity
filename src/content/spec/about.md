@@ -93,7 +93,15 @@
 
 ### 开发
 
-- 旧个人博客 Vue3 + SpringBoot + MybatisPlus + Redis + MySQL( 虽然烂大街但我还是要说(*/ω＼*) )
+::github{repo=halfcity789/Halfcity-Blog-frontend}
+
+::github{repo=halfcity789/Halfcity-Blog-backend}
+
+### 爬虫
+
+::github{repo=halfcity789/pixivcrawl}
+
+::github{repo=halfcity789/IwaraCrawl}
 
 ---
 
