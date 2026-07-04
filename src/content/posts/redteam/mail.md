@@ -2,6 +2,7 @@
 title: 深入讨论现代邮件服务如何防范邮件钓鱼攻击
 description: 本文会从协议设计缺陷讲起，梳理邮件格式本身的一些机制如何被滥用，再谈现代邮件服务商用 SPF、DKIM、DMARC 打的这套补丁，最后聊聊其他相关协议(IMAP/POP3)、常见攻击手段，以及目前比较完整的缓解方案。
 published: 2026-07-02
+updated: 2026-07-03
 category: 红队
 tags: [邮件钓鱼, 邮件, SMTP, IMAP, POP3, 实战]
 pinned: false

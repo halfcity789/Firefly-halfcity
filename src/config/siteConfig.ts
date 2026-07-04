@@ -22,7 +22,7 @@ export const siteConfig: SiteConfig = {
 	keywords: [
 		"逆向",
 		"渗透",
-		"Hypervisor",
+		"驱动开发",
 		"游戏安全",
 		"开发",
 		"爬虫",

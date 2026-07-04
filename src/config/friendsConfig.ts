@@ -33,8 +33,8 @@ export const friendsConfig: FriendLink[] = [
 	},
 	{
 		title: "Lingkaの宝藏之地",
-		imgurl:"https://bu.dusays.com/2026/06/12/6a2c1cb4f2089.jpg",
-		desc: "一个在硬件、MCU、FPGA和ARM Linux SoC之间来回折腾的开发者，目标是让每一块板子都乖乖跑起来。",
+		imgurl: "https://bu.dusays.com/2026/06/12/6a2c1cb4f2089.jpg",
+		desc: "一个在硬件、MCU、FPGA和ARM Linux SoC之间来回折腾的开发者,目标是让每一块板子都乖乖跑起来。",
 		siteurl: "https://www.lingkalab.top/",
 		tags: ["Blog"],
 		weight: 10, // 权重，数字越大排序越靠前
