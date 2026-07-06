@@ -3,9 +3,9 @@ title: Visual Studio 2026 无法正确识别驱动项目
 description: Visual Studio 2026 无法正确识别驱动项目，具体表现为项目属性中的有关驱动的选项全部消失，但是项目属性的的确设置的是Driver，这里来讲讲如何解决。同时讲讲微软最新引入的C的包管理工具NuGet。
 published: 2026-07-03
 category: 问题解决
-tags: [包管理, WDM, WDK, SDK, NuGet, VIsual Studio 2026]
+tags: [包管理, WDM, WDK, SDK, NuGet, Visual Studio 2026]
 pinned: false
-draft: true
+draft: false
 image: https://img.halfcity.top/2026/07/03/df6e72e72a6eae681eb36bd7c4b018fc.avif
 ---
 
