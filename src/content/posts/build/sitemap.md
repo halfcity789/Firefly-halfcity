@@ -2,9 +2,9 @@
 title: 通过Sitemap将博客接入搜索引擎
 description: 新站建好后一般都无法通过搜索引擎搜到自己的网站，此时就需要通过一些方式让搜索引擎知道这个站的存在
 published: 2026-06-29
-updated: 2026-06-29
-category: 其他
-tags: [部署, 演示]
+updated: 2026-07-08
+category: 部署
+tags: [演示]
 pinned: false
 draft: false
 ---

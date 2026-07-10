@@ -2,9 +2,9 @@
 title: 博客搭建过程
 description: 论一个博客是如何建成的
 published: 2026-06-27
-updated: 2026-06-28
-category: 其他
-tags: [部署, 演示]
+updated: 2026-07-08
+category: 部署
+tags: [演示, Cloudflare]
 pinned: false
 draft: false
 ---

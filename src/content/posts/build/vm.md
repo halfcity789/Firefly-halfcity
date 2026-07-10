@@ -2,8 +2,9 @@
 title: 搭建vmm驱动调试环境 - Windows虚拟机
 description: 手工搭建一个WIndows 22H2的调试虚拟机，用于方便后续驱动和Implant的调试。
 published: 2026-07-03
-category: 其他
-tags: [部署, 虚拟机, 环境搭建, WinDbg, HyperDbg, Windows]
+updated: 2026-07-08
+category: 部署
+tags: [虚拟机, 环境搭建, WinDbg, HyperDbg, Windows]
 pinned: false
 draft: false
 image: https://img.halfcity.top/2026/07/03/3b99e6a3a75d8415649aad33386fd27b.avif
