@@ -102,7 +102,7 @@ VM-exit handler 需要向更高层汇报或求助的场景，正常做法是记�
 | 分发方式 | 单一入口 `KiSystemCall64` 内部按 `RAX` 查 `KeServiceDescriptorTable` 分发 | 单一入口按 `Exit Reason` 字段分发 |
 | 返回指令 | `SYSRET`/`SYSEXIT`，只需切换 CS/SS/RIP/RFLAGS，代价很低 | `VMRESUME`，需要恢复完整 Guest-State Area，代价高得多 |
 | 单次往返开销 | 通常几十到一百多个周期 | 通常几百到上千个周期(VM-exit/entry 本身的微架构开销 + 可能的 TLB/cache 效应) |
-| 反向对称的"root 执行会怎样" | Ring0 代码执行 `syscall` 在硬件层面依然会正常触发，不检查当前 CPL 是不是已经是 0，会重新跳进 `KiSystemCall64`，容易造成诡异的重入行为，但 Windows 应该有对应检查 | VMX root 下执行 `VMCALL` 不会重入 VM-exit handler，而是被定向到 dual-monitor SMM 这一完全不同的机制，配置不当直接 `#GP` |
+| 重复执行 | Ring0 代码执行 `syscall` 在硬件层面依然会正常触发，不检查当前 CPL 是不是已经是 0，会重新跳进 `KiSystemCall64`，容易造成诡异的重入行为，但 Windows 应该有对应检查 | VMX root 下执行 `VMCALL` 不会重入 VM-exit handler，而是被定向到 dual-monitor SMM 这一完全不同的机制，配置不当直接 `#GP` |
 
 从这张表能看出一个共同的设计模式:
 
@@ -119,7 +119,7 @@ VM-exit handler 需要向更高层汇报或求助的场景，正常做法是记�
 | | 触发条件 | 是否可被 VMM 选择性拦截 | 典型用途 |
 |---|---|---|---|
 | **VMCALL(non-root/guest 执行)** | Guest 主动执行，任意 CPL | 否，无条件 VM-exit | Hypercall，guest 向 VMM 请求服务的标准入口 |
-| **VMCALL(root 执行)** | VMX root 下执行 | 不适用(不是拦截语义) | SMM 双监控(STM)信令，配置不当直接 `#GP`，不是通用调用机制 |
+| **VMCALL(root 执行)** | VMX root 下执行 | 不适用 | SMM 双监控(STM)信令，配置不当直接 `#GP`，不是通用调用机制 |
 
 `VMCALL` 便是 Guest 与 Host 沟通的桥梁。
 
