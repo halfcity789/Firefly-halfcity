@@ -45,7 +45,7 @@
 - Active Directory 与红队技术
 - Rust / Go 开发
 - Windows Driver（WDM）
-- Hypervisor 与 VT-x
+- ~~Hypervisor 与 VT-x~~ 已老实
 - Rootkit / Bootkit
 - 二进制安全
 - 操作系统
@@ -117,7 +117,7 @@
 
 - Windows Kernel Abuse
 - Reverse Engineering (exe/apk)
-- Hypervisor & Virtualization
+- ~~Hypervisor & Virtualization~~ 没招了
 - Normal Development (Rust / Go ....)
 - Malware Analysis
 - Offensive Security
@@ -151,4 +151,7 @@
 希望这里能够记录我的成长，也能够陪伴我的探索，并帮助需要的人。
 
 **写于: 2026.6.28**
-**修改: 暂无**
+
+**修改:**
+
+- 2026.7.13 -- hypervisor 介绍

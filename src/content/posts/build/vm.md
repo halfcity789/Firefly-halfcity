@@ -1,6 +1,6 @@
 ---
-title: 搭建vmm驱动调试环境 - Windows虚拟机
-description: 手工搭建一个WIndows 22H2的调试虚拟机，用于方便后续驱动和Implant的调试。
+title: 搭建 hypervisor 驱动调试环境 - Windows虚拟机
+description: 手工搭建一个WIndows 22H2的调试虚拟机。详细记录Windows 22H2调试虚拟机的完整搭建过程，涵盖VMware配置、系统安装、Win11Debloat清理、防火墙设置及KDNET内核调试环境部署，用于方便后续驱动和Implant的开发与调试。
 published: 2026-07-03
 updated: 2026-07-08
 category: 部署

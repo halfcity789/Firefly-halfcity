@@ -1,6 +1,6 @@
 ---
 title: Windbg 全面解析
-description: 详细讲述驱动开发的调试神器Windbg的使用。深入介绍 WinDbg 的应用场景与常用命令。
+description: 深入解读 WinDbg 调试器，涵盖内核调试、符号配置、常用命令与驱动开发实战，系统解析其运作机制及内核结构查看技巧。
 published: 2026-07-03
 category: 驱动开发
 tags: [Windbg, Windows内核, 调试, 逆向, Windows]
