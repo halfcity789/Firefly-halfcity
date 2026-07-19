@@ -8,7 +8,7 @@
 
 现在回忆一下，高中的生活虽然没有初中想象中那么累，但也说不上说轻松。网安的学习可以说是很好的调味剂，让我能够不困于枯燥的学习。虽然有时网安上的问题反而比学习上的问题还棘手，但我倒不会对这段路感到遗憾。
 
-如果要形容一下自己，我可以说是话多也话少的人。
+如果要形容一下自己的话，略。
 
 ---
 
@@ -44,13 +44,10 @@
 - Android 逆向
 - Active Directory 与红队技术
 - Rust / Go 开发
-- Windows Driver（WDM）
-- ~~Hypervisor 与 VT-x~~ 已老实
-- Rootkit / Bootkit
+- Windows Driver（WDM
 - 二进制安全
 - 操作系统
 - CPU 与计算机体系结构
-- IoT 与嵌入式
 
 <img src="https://www.hackthebox.eu/badge/image/1560925" alt="HTB Profile" />
 
@@ -72,10 +69,10 @@
 
 目前主要专注于以下几个方向：
 
-- **Daylight**: 基于 Rust/GO 的 C2 基础设施 (Implent/Cli/Server)
+- **Daylight**: 略
 - **Sparkle**: 基于Vt 实现 EPT Hook、Minifilter、驱动读写的WDM驱动，提供底层访问能力
-- **Aurora**： Sparkle的用户态FPS外部内存绘制框架实现
-- HTB 依旧打靶机
+- **Aurora**： 略
+- 略
 
 学习仍在继续，项目也还远远没有完成。
 
@@ -91,7 +88,7 @@
 
 ### 逆向
 
-- 完成包括 **csgo** 在内的几款款内部内存waigua工具的制作，涵盖从 Source 到 Unity 引擎等。
+略
 
 ### 开发
 
@@ -116,13 +113,12 @@
 这里主要会分享：
 
 - Windows Kernel Abuse
-- Reverse Engineering (exe/apk)
-- ~~Hypervisor & Virtualization~~ 没招了
-- Normal Development (Rust / Go ....)
+- Reverse Engineering
+- Normal Development
 - Malware Analysis
 - Offensive Security
 - Pentest (Web/Endpoint/AD)
-- Game Security / FPS External Cheats (Memory / AI)
+- Game Security
 - Crawler
 - 一些开发或者渗透过程中踩过的坑
 - 偶尔记录一些自己的思考
@@ -155,3 +151,4 @@
 **修改:**
 
 - 2026.7.13 -- hypervisor 介绍
+- 2026.7.19 -- 修改部分敏感内容
