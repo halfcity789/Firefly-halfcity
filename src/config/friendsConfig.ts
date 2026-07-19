@@ -111,6 +111,15 @@ export const friendsConfig: FriendLink[] = [
 		tags: ["Blog"],
 		weight: 10, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
+	},
+	{
+		title: "补络阁",
+		imgurl: "https://oss.tuf3i.cc/blog/profile/avatar.png",
+		desc: "咕咕嘎嘎，咕咕嘎嘎...",
+		siteurl: "https://blog.tuf3i.cc",
+		tags: ["Blog"],
+		weight: 100, // 权重，数字越大排序越靠前
+		enabled: true, // 是否启用
 	}
 ];
 
