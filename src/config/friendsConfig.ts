@@ -118,7 +118,34 @@ export const friendsConfig: FriendLink[] = [
 		desc: "咕咕嘎嘎，咕咕嘎嘎...",
 		siteurl: "https://blog.tuf3i.cc",
 		tags: ["Blog"],
-		weight: 100, // 权重，数字越大排序越靠前
+		weight: 50, // 权重，数字越大排序越靠前
+		enabled: true, // 是否启用
+	},
+	{
+		title: "萑澈的寒舍",
+		imgurl: "https://gastigado.cnies.org/d/elements/hxcn_transparent_240.png",
+		desc: "就是为了这点醋才包的这顿饺子",
+		siteurl: "https://hxcn.cnies.org/",
+		tags: ["Blog"],
+		weight: 10, // 权重，数字越大排序越靠前
+		enabled: true, // 是否启用
+	},
+	{
+		title: "RAGNote",
+		imgurl: "https://ragnote.top/Avatar.png",
+		desc: "Life is code. I will debug it.",
+		siteurl: "https://ragnote.top/",
+		tags: ["Blog"],
+		weight: 10, // 权重，数字越大排序越靠前
+		enabled: true, // 是否启用
+	},
+	{
+		title: "SengokuCola的博客",
+		imgurl: "https://lsky.nibutupaopao.top/i/2026/07/09/6a4fc40211f69.png",
+		desc: "随着风的轨迹 在那耀眼的午后",
+		siteurl: "https://home.nibutupaopao.top",
+		tags: ["Blog"],
+		weight: 10, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
 	}
 ];
