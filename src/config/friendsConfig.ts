@@ -147,6 +147,15 @@ export const friendsConfig: FriendLink[] = [
 		tags: ["Blog"],
 		weight: 10, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
+	},
+	{
+		title: "MeTの主页",
+		imgurl: "https://met6.top/res/logo.png",
+		desc: "Stay Hungry. Stay Foolish. 求知若渴，大智若愚。",
+		siteurl: "https://met6.top/",
+		tags: ["Blog"],
+		weight: 50, // 权重，数字越大排序越靠前
+		enabled: true, // 是否启用
 	}
 ];
 
