@@ -3,7 +3,7 @@ title: oqs-sys库报错 error[E0080] attempt to compute 1_usize - 88_usize, whic
 description: error[E0080] attempt to compute 1_usize - 88_usize, which would overflow 在编译oqs-sys绑定库时报错,这里进行修复
 published: 2026-07-05
 category: 问题解决
-tags: [OQS]
+tags: [OQS, rust]
 pinned: false
 draft: false
 ---
