@@ -3,7 +3,7 @@ title: Windbg 在 Windows 运行时断点失效解决
 description: 记录一次由第三方内核驱动影响 Windows Kernel Debug Runtime 行为的问题排查过程
 published: 2026-08-05
 category: 问题解决
-tags: [Windows, WinDbg, AntiCheat, Windows内核, PAC, ]
+tags: [Windows, WinDbg, AntiCheat, Windows内核, PAC]
 pinned: false
 draft: false
 image: https://img.halfcity.top/2026/08/05/841c5951c433f064cdac8e1ec1ff043b.avif
@@ -252,23 +252,7 @@ KdDebuggerEnabled = 1
 
 KdDebuggerNotPresent = 0
 
-也只能说明：
-
-Debugger基础设施存在。
-
-Kernel Debug依赖：
-
-CPU Exception
-
-        |
-        v
-
-Exception Dispatcher
-
-        |
-        v
-
-Debugger Handler
+也只能说明 Debugger 基础设施存在。
 
 任何Ring0组件都有可能影响。
 
