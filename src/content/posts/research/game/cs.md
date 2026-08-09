@@ -2,7 +2,7 @@
 title: CS2 Cheats From Scratch!
 description: 本文仅用于游戏安全技术科普、逆向工程原理学习以及反作弊研究交流，目的在于技术分享与安全意识提升，绝不鼓励、支持或教唆任何形式的游戏作弊行为。纯学术性质研究探讨，无危害，无恶意！纯学术性质研究探讨，无危害，无恶意！纯学术性质研究探讨，无危害，无恶意！
 published: 2026-08-08
-updated: 2026-08-08
+updated: 2026-08-09
 category: 游戏安全
 tags: [CS2, FPS, Windows, WDM, CE, WinDbg, Windows内核, PPL, 窗口, EPT Hook, Windows驱动, 游戏引擎, 射影几何, Tauri, React, 外挂, rust, IRQL, IDA, 页表, Spectre]
 pinned: false
@@ -684,13 +684,23 @@ pub fn world_to_screen(&self, world: Vector3, screen_w: f32, screen_h: f32) -> O
 
 可能有点糊，这是我从我之前录的视频里截的，CE 当时调的比较小，将就看。
 
-但依旧可以看见它明显的坐标分量之类的特征。
+但依旧可以看见它明显的 `坐标分量` ，`你不动它不动，你一动它就动` 之类的特征。
 
 一般来讲这个是 VP 矩阵，所以 V 矩阵和 P 矩阵会在它上面，这也是一个明显的特征。
 
 > 我要是就是不认识这个矩阵怎么办？
 
 这个确实没办法，就好像你一定要把钻石当玻璃一样，只能说多见几次肯定就认识了。
+
+#### 注
+
+这个东西并不是 3D 游戏的专属，这个东西是游戏引擎的基础之一，理论上来讲每一个游戏都会有。
+
+比如像是 `不装第一人称 mod 的逃离鸭科夫`、`王者荣耀`，他们的表现出的视角像是平面的。
+
+但是这只是因为 Camera 的高度坐标被固定了，镜头只能平移导致的，如果你去观察矩阵也能看出来和可以自由转动视角的 3D 游戏相比，这类游戏移动视角矩阵中的一些值是不会变化的。
+
+但是上述的理论依旧是成立的，依旧可以推出坐标，依旧可以画框...
 
 ### 坐标偏移 - m_vecAbsOrigin
 
@@ -2334,7 +2344,36 @@ Complete:
 
 他的任务很简单，根据请求的 `IOCTL Code` 校验请求是否符合要求，然后查表提取对应的 handler 执行返回结果。
 
-这样将 `handler` 与派遣函数本身解耦了，我认为付出一点点查表的时间是完全值得的。
+而我们可以这样定义 HandlerTable：
+
+```c
+static const IOCTL_ENTRY g_IoctlHandlerTable[] = {
+    { IOCTL_READ_PROCESS_MEMORY,    DrvHandleReadProcessMemory,     sizeof(RW_PROCESS_MEMORY_REQUEST),      sizeof(RW_PROCESS_MEMORY_RESPONSE) },
+    { IOCTL_WRITE_PROCESS_MEMORY,   DrvHandleWriteProcessMemory,    sizeof(RW_PROCESS_MEMORY_REQUEST),      sizeof(RW_PROCESS_MEMORY_RESPONSE) },
+	{ IOCTL_GET_MODULE_BASE,        DrvHandleGetModuleBase,         sizeof(GET_MODULE_BASE_REQUEST),        sizeof(GET_MODULE_BASE_RESPONSE)  },
+	{ 0, NULL, 0, 0 }
+};
+```
+
+以 IOCTL Coe 作为索引，每一个 entry 附带 handler 的地址，请求和响应的大小用于校验。
+
+这样将 `handler` 与派遣函数本身解耦了，我认为运行时付出一点点查表的时间是完全值得的。
+
+```c
+static PIOCTL_HANDLER FindIoctlHandler(
+    _In_ ULONG IoControlCode
+)
+{
+	for (PIOCTL_ENTRY entry = g_IoctlHandlerTable; entry->Handler != NULL; entry++) {
+		if (entry->IoControlCode == IoControlCode) {
+			return entry->Handler;
+		}
+	}
+	return NULL;
+}
+```
+
+像这样我们就可以获取需要的 handler 了。
 
 ### 内存读写
 
@@ -2986,21 +3025,182 @@ impl AuroraRuntime {
 
 有时不禁感叹为了几个框至于吗...
 
-## 附
+## 尾声
 
 > 你可能发现了，我这在线的图为啥和离线的图不太一样？
 
-那肯定是因为我添加了一些有趣的新功能啊。不过，都是一些锦上添花的东西啦。
+那肯定是因为我添加了一些有趣的新功能啊，比如雷达、辅助线、人物提示之类的。
+
+不过，都是一些锦上添花的东西啦，因为 CS2 实体渲染的方式修改了，背后的敌人不会渲染，而看得见的敌人因为画了框也很明显，所以雷达、指示器之类的东西看起来就有点意义不明()。
 
 限于篇幅，再讲述有关 ARK 或者 Hypervisor 部分的实现就显得过于长了。
 
-所以这里就先不讲有关 rage 功能的内容了，比如 aimbot、spinbot、slientaim、triggerbot 之类的东西。
+简单来说写一个 ARK 可以用于保护我们外部绘制的进程让他不会被轻易发现，而 Hypervisor 则是和 `EPT Hook` 有关。
 
-目前 ESP 的实现已经基本满足本文的目的了。给一段路画一个句号吧。
+`EPT Hook` 是一个很有意思的 Hook 方式，他可以做到对 Guest（这里就是指整个 Windows）不可见的前提下实现 Hook。而一些功能就需要使用这个实现。
+
+> 如果你对这个感兴趣，你可以在我[之前的文章中](/posts/research/driver/hypervisor/ept)找到相关的介绍
+
+这篇文章是随手写的，也算是记录一下。因为写的也比较赶，所以可能有的地方会有错别字，或者某些概念忘了讲/没讲清楚之类的问题，如果存在，请见谅。
+
+目前 ESP 的实现已经基本满足本文学习的目的了。
+
+让我们画一个圆满句号吧！
+
+不过如果你觉得 ESP 的功能还不够给力，希望看看更带劲的功能，那么请你看看 `附` 中的内容吧。
+
+如果你觉得累了，可以跳到 `结语` 。
+
+## 附
+
+在这里我们单独讲讲 `静默自瞄`，这也是 CS2 外挂视频中的常见嘉宾。
+
+这里要提一下 CS2 中存在的一个函数和一个全局变量，`CreateMove()` 和 `ClientState`。
+
+`CreateMove()` 和 `ClientState` 是客户端输入与网络状态处理中的核心概念，主要来自引擎的输入系统与客户端网络层。
+
+它们在游戏逻辑中负责玩家指令的生成与同步。
+
+### ClientState
+
+ClientState 是客户端网络与连接状态的核心管理对象，负责跟踪与服务器的同步情况。
+
+主要职责：
+
+- 判断是否已完全进入游戏。
+- 持有 NetChannel，负责实际数据包的收发。
+- 跟踪命令相关状态：lastoutgoingcommand（最近发出的命令号）、chokedcommands（被卡住未发送的命令数）、m_nDeltaTick、m_flNextCmdTime 等。
+- 参与预测、命令队列管理、以及是否发送数据包（sendpacket）的决策。
+
+它本质上是客户端视角的 `连接状态机 + 命令缓冲管理器`，用于保持客户端与服务器世界状态的一致性。
+
+> 最重要的是，它实际持有和服务器同步的玩家数据，比如 Angle，你如果尝试修改玩家实例中的 Angle 会发现没有作用，因为服务器实际接受的是 ClientState 中的 Angle 数据
+>
+> 换句话说，修改这里的数据就可以轻松实现自瞄了
+
+### CreateMove
+
+`CreateMove()` 是客户端处理玩家输入并生成可发送指令（UserCmd）的关键函数。
+
+它会在每帧根据玩家的原始输入（键盘、鼠标、按键状态等）构建 CUserCmd，填充移动值（forwardmove、sidemove 等）、视角角度、按钮状态，最终准备发送给服务器进行模拟。
+
+在引擎内部，它是输入采样与命令队列的关键一环，直接影响移动、射击、跳跃等行为。
+
+> 这里也可以看出来，只要我们同时修改 CUserCmd 中的参数和 ClientState 中的数据就可以实现操作发送给服务器的数据
+
+这样我们就可以实现一些很帅的操作...
+
+### 静默自瞄
+
+> [!NOTE]
+> 这里使用之前搞 CSGO 的作为示例。
+
+先封装一下起源引擎：
+
+```rs
+impl Engine {
+    pub fn new() -> Self {
+        let mem = get_memory_controller();
+        let base = mem.base_of("engine.dll").unwrap_or(0);
+        debug!("SourceRuntime", "resolved base: {:#x}", base);
+
+        Self { base }
+    }
+
+    pub fn client_mode(&self) -> Address {
+        get_memory_controller().read("client.dll", offset::CLIENT_MODE).unwrap_or(0)
+    }
+
+    pub fn client_state(&self) -> Address {
+        get_memory_controller().read("engine.dll", offset::ENGINE_CLIENT_STATE).unwrap_or(0)
+    }
+
+    fn view_angles_base(&self) -> Option<Address> {
+        if self.client_state() == 0 { return None }
+        Some(self.client_state() + offset::CLIENT_STATE_VIEW_ANGLE)
+    }
+
+    pub fn view_angles(&self) -> [f32; 3] {
+        let mem = get_memory_controller();
+
+        let pitch: f32 = mem.read_at(self.view_angles_base().unwrap()).unwrap_or(0.0);
+        let yaw:   f32 = mem.read_at(self.view_angles_base().unwrap() + 0x04).unwrap_or(0.0);
+        let roll:  f32 = mem.read_at(self.view_angles_base().unwrap() + 0x08).unwrap_or(0.0);
+        [pitch, yaw, roll]
+    }
+
+    pub fn set_view_angles(&self, angles: [f32; 3]) {
+        let mem = get_memory_controller();
+        mem.write_at(self.view_angles_base().unwrap(), angles[0]).ok();
+        mem.write_at(self.view_angles_base().unwrap() + 0x04, angles[1]).ok();
+        mem.write_at(self.view_angles_base().unwrap() + 0x08, angles[2]).ok();
+    }
+}
+
+```
+
+然后使用 Minhook 实现 hook:
+
+```rs
+unsafe extern "thiscall" fn hooked_create_move(
+    this: Address,
+    fl_input_sample_time: f32,
+    cmd: *mut CUserCmd,
+) -> bool {
+    unsafe {
+        let engine = get_source_runtime();
+
+        let ret = call_original!(ORIGINAL_CREATE_MOVE, FnCreateMove, this, fl_input_sample_time, cmd);
+
+        if cmd.is_null() { return ret }
+        let cmd = &mut *cmd;
+        if cmd.command_num == 0 { return ret }
+
+        if call_original!(ORIGINAL_CREATE_MOVE, FnCreateMove, this, fl_input_sample_time, cmd) {
+            engine.set_view_angles(cmd.viewangles);
+        }
+
+        let mut shimo = SHIMO_RUNTIME.write().unwrap();
+        let scene = SCENE.get().unwrap().load();
+
+        if !scene.is_renderable() {
+            return ret
+        }
+
+        let local = scene.local_player;
+
+        if local.is_alive() {
+            if shimo.feature_flags.contains(FeatureFlags::SILENT_AIM) {
+                shimo.silent_aim.apply(&mut cmd.viewangles, shimo.screen_w, shimo.screen_h);
+            }
+        }
+
+        false
+    }
+}
+```
+
+这里先调用 `CreateMove()` 填充参数，然后再微操一下，将 angle 修改为指向敌人头部。
+
+这样我们就实现了...
+
+![](https://img.halfcity.top/2026/08/9/7ebc9aa59eb874c722827506b923cb05.avif)
+
+![](https://img.halfcity.top/2026/08/9/7604d12ffed6c4463e79bd5bea2718d4.avif)
+
+虽然只有图片，但是张力还是有的。
+
+现在我们知道了各类功能的基础了，看到大哥开转也不怕了！
+
+## 结语
 
 这里我依旧要强调一下本文学术的目的，即使我确信你明白 `声明` 中的内容。
 
-至此本文完，感谢你的阅读。
+我希望这篇文章可以帮到你，也欢迎你来与我进一步交流。
+
+至此，本文完。
+
+感谢你的阅读！
 
 ## 引用
 
