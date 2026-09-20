@@ -127,7 +127,7 @@ export const friendsConfig: FriendLink[] = [
 		desc: "就是为了这点醋才包的这顿饺子",
 		siteurl: "https://hxcn.cnies.org/",
 		tags: ["Blog"],
-		weight: 10, // 权重，数字越大排序越靠前
+		weight: 50, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
 	},
 	{
@@ -136,7 +136,7 @@ export const friendsConfig: FriendLink[] = [
 		desc: "Life is code. I will debug it.",
 		siteurl: "https://ragnote.top/",
 		tags: ["Blog"],
-		weight: 10, // 权重，数字越大排序越靠前
+		weight: 50, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
 	},
 	{
@@ -145,7 +145,7 @@ export const friendsConfig: FriendLink[] = [
 		desc: "随着风的轨迹 在那耀眼的午后",
 		siteurl: "https://home.nibutupaopao.top",
 		tags: ["Blog"],
-		weight: 10, // 权重，数字越大排序越靠前
+		weight: 50, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
 	},
 	{
@@ -153,6 +153,24 @@ export const friendsConfig: FriendLink[] = [
 		imgurl: "https://met6.top/res/logo.png",
 		desc: "Stay Hungry. Stay Foolish. 求知若渴，大智若愚。",
 		siteurl: "https://met6.top/",
+		tags: ["Blog"],
+		weight: 50, // 权重，数字越大排序越靠前
+		enabled: true, // 是否启用
+	},
+	{
+		title: "ColorSkyFun",
+		imgurl: "https://avatars.githubusercontent.com/u/110511284",
+		desc: "真正重要的东西用眼睛是看不见的, 只有用心才能看清.",
+		siteurl: "https://colorsky.fun/",
+		tags: ["Blog"],
+		weight: 50, // 权重，数字越大排序越靠前
+		enabled: true, // 是否启用
+	},
+	{
+		title: "0n1y - Blog",
+		imgurl: "https://www.0n1y.org/0n1y.jpg",
+		desc: "炼就坚持仙蛊",
+		siteurl: "https://www.0n1y.org/",
 		tags: ["Blog"],
 		weight: 50, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
