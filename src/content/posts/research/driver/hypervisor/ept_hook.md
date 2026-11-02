@@ -1,8 +1,8 @@
 ---
 title: Hypervisor Sparkle 研究日志 - EPT Hook
 description: 讲讲 EPT Hook 的实现与一些坑
-published: 2026-11-2
-updated: 2026-11-2
+published: 2026-11-02
+updated: 2026-11-02
 category: 驱动开发
 tags: [Hypervisor, EPT, EPT Hook, Windows内核, Windows, WDM, WinDbg, trampoline, EPT Hook]
 pinned: false
@@ -19,7 +19,7 @@ EPT 的每一页有独立的 R/W/X 权限位，这样我们就可以像 Page Hoo
 
 后面也会记录中间踩过的一些坑。
 
-## EPT Hook 是怎么工作的
+## EPT Hook
 
 ### 双视图
 
@@ -60,7 +60,7 @@ flowchart LR
     D --> A
 ```
 
-也就是说，一次普通的数据读取要走 **2 个 VM-exit**，这样的时钟开销就是检测 Hypervisor 一个比较常见的做法。
+也就是说，一次普通的数据读取要走**2 个 VM-exit**，这样的时钟开销就是检测 Hypervisor 一个比较常见的做法。
 
 Sparkle 中的核心状态机代码长这样（节选自 `EptHandlePageHookExit`）：
 
