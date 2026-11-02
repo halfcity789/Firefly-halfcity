@@ -177,9 +177,9 @@ export const friendsConfig: FriendLink[] = [
 	},
 	{
 		title: "Ricardo 的博客",
-		imgurl: "https://ricardo-firefly.pages.dev",
+		imgurl: "https://ricardo-firefly.pages.dev/images/avatar.jpg",
 		desc: "记录计算机专业大学生的学习过程与趣味小玩意",
-		siteurl: "https://ricardo-firefly.pages.dev/images/avatar.jpg",
+		siteurl: "https://ricardo-firefly.pages.dev", 
 		tags: ["Blog"],
 		weight: 50, // 权重，数字越大排序越靠前
 		enabled: true, // 是否启用
