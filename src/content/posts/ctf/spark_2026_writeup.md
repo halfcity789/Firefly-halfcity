@@ -1,6 +1,14 @@
-# Spark CTF 2026 Writeup
+---
+title: Spark CTF 2026 Writeup - Reverse 方向
+description: Spark 新生赛圆满结束了，这里我就将我的 WP 公布一下，希望可以帮助到同样希望学习 CTF 的友友。
+published: 2026-11-11
+category: CTF
+tags: [Spark CTF 2026]
+pinned: false
+draft: false
+image: https://img.halfcity.top/2026/11/11/44929c2f59dbfa428a2bc7d24bbdd26c.avif
+---
 
-By halfcity987 - 半城
 
 ## Week 1
 
