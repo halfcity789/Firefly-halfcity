@@ -1,7 +1,7 @@
 ---
-title: "Spark CTF 2026 Writeup (5/5) - Week 5"
-description: "Spark 新生赛 Writeup 第五部分（Week 5），Reverse 方向以及 MC（Minecraft 插件审计）题目的分析与利用。"
-published: 2026-11-11T06:00:00+08:00
+title: Spark CTF 2026 Writeup (5/5)
+description: 这是比赛的 Week 5 部分。
+published: 2026-11-11
 category: CTF
 tags: [Spark CTF 2026, AST, Java 逆向, JVM 逆向, AOT 缓存, 软件破解, Minecraft, PlaceholderAPI, 插件审计, NodeJS 代码执行]
 pinned: false
