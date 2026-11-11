@@ -5365,7 +5365,9 @@ flag{cIa5slc@I_cOd3_1s_fUn_7hou9h_th3y_@r3_n0t_5@f3_3nOu9h}
 
 题目使用两个独立的 线性同余生成器（LCG）：
 
-$$s_{i+1} = (a \cdot s_i + b) \bmod n$$
+$$
+s_{i+1} = (a \cdot s_i + b) \bmod n
+$$
 
 其中 $a$、$b$ 是与明文相同比特长度的素数，$n$ 是比特长度多 1 的素数。
 
@@ -5377,22 +5379,30 @@ $$s_{i+1} = (a \cdot s_i + b) \bmod n$$
 
 已知三个连续状态 $s_i,s_{i+1},s_{i+2}$：
 
-$$\begin{align*}
+$$
+\begin{align*}
 s_{i+1} &\equiv a\cdot s_i + b \pmod{n}\\
 s_{i+2} &\equiv a\cdot s_{i+1} + b \pmod{n}
-\end{align*}$$
+\end{align*}
+$$
 
 两式相减消掉 $b$：
 
-$$a \equiv (s_{i+2}-s_{i+1})\cdot(s_{i+1}-s_i)^{-1} \pmod{n}$$
+$$
+a \equiv (s_{i+2}-s_{i+1})\cdot(s_{i+1}-s_i)^{-1} \pmod{n}
+$$
 
 再回代求 $b$：
 
-$$b \equiv s_{i+1} - a\cdot s_i \pmod{n}$$
+$$
+b \equiv s_{i+1} - a\cdot s_i \pmod{n}
+$$
 
 用全部输出验证一致性后，由第一个输出反推初始种子：
 
-$$p_1 \equiv (o_0 - b)\cdot a^{-1} \pmod{n_1}$$
+$$
+p_1 \equiv (o_0 - b)\cdot a^{-1} \pmod{n_1}
+$$
 
 $p_1 < n_1$，唯一确定
 
@@ -5402,23 +5412,31 @@ $p_1 < n_1$，唯一确定
 
 两步递推关系为：
 
-$$s_{k+2} = a^2\cdot s_k + b(a+1) \pmod{n}$$
+$$
+s_{k+2} = a^2\cdot s_k + b(a+1) \pmod{n}
+$$
 
 即：
 
-$$t_{i+1} = A\cdot t_i + B \pmod{n},\quad A=a^2,\quad B=b(a+1)$$
+$$
+t_{i+1} = A\cdot t_i + B \pmod{n},\quad A=a^2,\quad B=b(a+1)
+$$
 
 用同样方法求出 $A,B$。
 
 因为 $n_2$ 是素数，对 $A$ 求模平方根（Tonelli-Shanks 算法）得到两个候选 $a$（$a$ 与 $-a$），再分别计算：
 
-$$b \equiv B\cdot(a+1)^{-1} \pmod{n_2}$$
+$$
+b \equiv B\cdot(a+1)^{-1} \pmod{n_2}
+$$
 
 筛选出 同时为素数 的那一对 $(a,b)$（符合题目 getPrime 生成方式）。
 
 最后由第一个输出反推：
 
-$$p_2 \equiv (t_0 - B)\cdot A^{-1} \pmod{n_2}$$
+$$
+p_2 \equiv (t_0 - B)\cdot A^{-1} \pmod{n_2}
+$$
 
 拼接将两部分明文按字节拼接即可得到完整 flag。
 
@@ -5638,7 +5656,9 @@ $$h \equiv g^x \pmod{p}$$
 
 观察 $p-1$ 的结构$p$ 是一个约 1015-bit 的素数。对 $p-1$ 进行因式分解：
 
-$$p-1 = 2^{32} \times 3^{21} \times 5^{15} \times 7^{41} \times 11^{35} \times 13^{40} \times 17^{48} \times 19^{9} \times 23^{30} \times 29^{33}$$
+$$
+p-1 = 2^{32} \times 3^{21} \times 5^{15} \times 7^{41} \times 11^{35} \times 13^{40} \times 17^{48} \times 19^{9} \times 23^{30} \times 29^{33}
+$$
 
 $p-1$ 完全光滑（所有素因子都非常小）。因此 $g$ 的阶 $\operatorname{ord}_p(g) = p-1$，可以用 Pohlig-Hellman 算法 高效求解 DLP。
 
@@ -5646,8 +5666,10 @@ Pohlig-Hellman 算法
 
 对每个素因子幂 $q^e \mid (p-1)$，把问题约化到阶为 $q^e$ 的子群：
 
-$$g_q = g^{(p-1)/q^e} \bmod p,\quad
-h_q = h^{(p-1)/q^e} \bmod p$$
+$$
+g_q = g^{(p-1)/q^e} \bmod p,\quad
+h_q = h^{(p-1)/q^e} \bmod p
+$$
 
 求 $x_q$ 使得 $g_q^{x_q} \equiv h_q \pmod{p}$，其中 $x_q \bmod q^e$。
 
@@ -5756,23 +5778,33 @@ $\mathrm{hint} = (a p + b + q)^{q(p-1)+1} \bmod p$
 
 在模 $p$ 下 $a p \equiv 0$，故
 
-$$\mathrm{hint} \equiv (b+q)^{q(p-1)+1} \pmod{p}.$$
+$$
+\mathrm{hint} \equiv (b+q)^{q(p-1)+1} \pmod{p}.
+$$
 
 指数可写为
 
-$$q(p-1)+1 = q\cdot(p-1)+1.$$
+$$
+q(p-1)+1 = q\cdot(p-1)+1.
+$$
 
 由 Fermat 小定理（$p\nmid(b+q)$，否则 $\mathrm{hint}=0$，与给定值矛盾）：
 
-$$(b+q)^{p-1}\equiv 1\pmod{p},$$
+$$
+(b+q)^{p-1}\equiv 1\pmod{p},
+$$
 
 于是
 
-$$(b+q)^{q(p-1)+1}\equiv(b+q)\cdot 1^q\equiv b+q\pmod{p}.$$
+$$
+(b+q)^{q(p-1)+1}\equiv(b+q)\cdot 1^q\equiv b+q\pmod{p}.
+$$
 
 即
 
-$$\mathrm{hint}\equiv q+b\pmod{p}\quad\Rightarrow\quad q+b-\mathrm{hint}=m p$$
+$$
+\mathrm{hint}\equiv q+b\pmod{p}\quad\Rightarrow\quad q+b-\mathrm{hint}=m p
+$$
 
 $m$ 为正整数。
 
@@ -5780,7 +5812,9 @@ $m$ 为正整数。
 
 两素数同为 512-bit，故 $p<q<2p$。结合 $\mathrm{hint}<p$ 及 $b<2^{20}$，可知
 
-$$0<q+b-\mathrm{hint}<2p+2^{20},$$
+$$
+0<q+b-\mathrm{hint}<2p+2^{20},
+$$
 
 因此 $m=1$ 或 $m=2$。对给定的 $n,\mathrm{hint}$ 的数量级分析（$\sqrt{n}\approx 7.74\times 10^{153}$，$\mathrm{hint}\approx 1.85\times 10^{153}$）表明实际以 $m=1$ 为主。
 
@@ -5788,19 +5822,27 @@ $$0<q+b-\mathrm{hint}<2p+2^{20},$$
 
 假设 $m=1$，则
 
-$$p=q+b-\mathrm{hint}.$$
+$$
+p=q+b-\mathrm{hint}.
+$$
 
 代入 $n=pq$ 得
 
-$$q^2+(b-\mathrm{hint})q-n=0.$$
+$$
+q^2+(b-\mathrm{hint})q-n=0.
+$$
 
 判别式
 
-$$\Delta=( \mathrm{hint}-b)^2+4n$$
+$$
+\Delta=( \mathrm{hint}-b)^2+4n
+$$
 
 必须为完全平方 $s^2$，且
 
-$$q=\frac{\mathrm{hint}-b+s}{2}$$
+$$
+q=\frac{\mathrm{hint}-b+s}{2}
+$$
 
 为整数，并满足 $n\bmod q=0$、$p=n/q$ 为素数且 $p<q$。
 
@@ -5810,19 +5852,29 @@ $b$ 为 20-bit 素数（共约 $3.86\times 10^4$ 个）。对每个候选 $b$ �
 
 搜索得到唯一解：
 
-$$b=1037801,$$
-$$\begin{align*}
+$$
+b=1037801,
+$$
+
+$$
+\begin{align*}
 p&=6866323681716969257795127567315445106103921415475902940702694659309786687945290329949653674647467557687118224057619528722699270690995323377583069329362813,\\
 q&=8720666768080635701141877044729969565994709984586372548535282850405888781931120757650733396944198532498565877506574168050328692668556327827837452042410779.
-\end{align*}$$
+\end{align*}
+$$
 
 验证：两者均为素数、$p q=n$、$q>p$ 且 $p=q+b-\mathrm{hint}$。
 （$m=2$ 的情形同样可枚举，但无解。）
 
 5. 解密
 
-$$\phi(n)=(p-1)(q-1),\qquad d=e^{-1}\bmod\phi(n),$$
-$$m=c^d\bmod n.$$
+$$
+\phi(n)=(p-1)(q-1),\qquad d=e^{-1}\bmod\phi(n),
+$$
+
+$$
+m=c^d\bmod n.
+$$
 
 还原字节串即得 flag。
 
